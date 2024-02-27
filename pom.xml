@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.idp</groupId>
-	<artifactId>eshop-webapp</artifactId>
+	<artifactId>shop-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>eshop-webapp</name>
-	<description>E-shop Web App </description>
+	<name>shop-server</name>
+	<description>shop webapp server</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

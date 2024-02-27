@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.idp.eshop-webapp' is invalid and this project uses 'com.idp.eshopwebapp' instead.
+* The original package name 'com.idp.eshop-webapp' is invalid and this project uses 'com.idp.server' instead.
 
 # Getting Started
 
