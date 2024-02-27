@@ -10,12 +10,13 @@ import java.util.List;
 @RequestMapping(path = "api/product")
 public class ProductController {
     private final ProductService productService;
-    public ProductController(ProductService produceService){
+
+    public ProductController(ProductService produceService) {
         this.productService = produceService;
     }
 
     @GetMapping
-    public List<Product> getProducts(){
+    public List<Product> getProducts() {
         return productService.getProducts();
     }
 }
