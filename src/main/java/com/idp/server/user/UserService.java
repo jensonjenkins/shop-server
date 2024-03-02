@@ -18,7 +18,11 @@ public class UserService {
     }
 
     public List<User> getUser() {
-        return userRepository.getUsersNative();
-//        return userRepository.findAll();
+        return userRepository.getUsers();
+    }
+
+    public User saveUser(User newUser) {
+        userRepository.save(newUser);
+        return newUser;
     }
 }

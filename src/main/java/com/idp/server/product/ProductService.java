@@ -10,11 +10,11 @@ public class ProductService {
     private final ProductRepository productRepository;
 
     @Autowired
-    public ProductService(ProductRepository productRepository){
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getProducts(){
-        return productRepository.findAll();
+    public List<Product> getProducts() {
+        return productRepository.getProducts();
     }
 }
