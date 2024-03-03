@@ -22,10 +22,11 @@ public class UserController {
         return userService.getUser();
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+    @PostMapping(path = "/saveUser",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE,
             headers = "content-type=text/json")
-    public ResponseEntity<User> createUser(@RequestBody User newUser) {
+    public ResponseEntity<User> saveUser(@RequestBody User newUser) {
         User user = userService.saveUser(newUser);
         if (user == null) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

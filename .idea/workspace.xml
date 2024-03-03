@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de56b159-d652-4b88-95ae-2b917f808999" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/session/Session.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/product/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/product/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/user/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/user/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/user/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
