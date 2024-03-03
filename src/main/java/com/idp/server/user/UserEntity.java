@@ -3,8 +3,8 @@ package com.idp.server.user;
 import jakarta.persistence.*;
 
 @Entity
-@Table
-public class User {
+@Table(name = "user")
+public class UserEntity {
     @Id
     @SequenceGenerator(
             name = "user_sequence",
@@ -17,19 +17,20 @@ public class User {
     )
     private Long id;
     private String username;
+    @Column(length = 300)
     private String password;
     private String firstName;
     private String lastName;
     private String phoneNo;
 
-    public User() {
+    public UserEntity() {
     }
 
-    public User(String username,
-                String password,
-                String firstName,
-                String lastname,
-                String phoneNo) {
+    public UserEntity(String username,
+                      String password,
+                      String firstName,
+                      String lastname,
+                      String phoneNo) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;

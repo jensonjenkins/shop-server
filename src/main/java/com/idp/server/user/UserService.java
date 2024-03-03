@@ -1,10 +1,7 @@
 package com.idp.server.user;
 
-import com.idp.server.product.Product;
-import com.idp.server.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -17,11 +14,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getUser() {
+    public List<UserEntity> getUser() {
         return userRepository.getUsers();
     }
 
-    public User saveUser(User newUser) {
+    public UserEntity saveUser(UserEntity newUser) {
         userRepository.save(newUser);
         return newUser;
     }
