@@ -31,7 +31,7 @@ public class SecurityConfig {
 
     @Autowired
     public SecurityConfig(CustomUserDetailService userDetailService,
-                          JwtAuthEntryPoint authEntryPoint) {
+            JwtAuthEntryPoint authEntryPoint) {
         this.userDetailService = userDetailService;
         this.authEntryPoint = authEntryPoint;
     }
@@ -43,9 +43,8 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(authEntryPoint))
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .anyRequest().authenticated()
-                )
+                        .requestMatchers("/**").permitAll()
+                        .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();

@@ -13,7 +13,7 @@ public class UserConfig {
     @Bean
     CommandLineRunner userCLRunner() {
         return args -> {
-            UserEntity u1 = new UserEntity("jenson",
+            UserEntity u1 = new UserEntity("jenson@email",
                     "12345",
                     "jenson",
                     "jenkins",

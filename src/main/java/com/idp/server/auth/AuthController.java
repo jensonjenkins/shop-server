@@ -51,7 +51,7 @@ public class AuthController {
             UserEntity user = userOptional.get();
             if (passwordEncoder.matches(loginDto.getPassword(), user.getPassword())) {
                 String token = jwtGenerator.generateToken(loginDto.getUsername());
-                return new ResponseEntity<>(new AuthResponseDto(token), HttpStatus.OK);
+                return new ResponseEntity<>(new AuthResponseDto(token, user), HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(new AuthResponseDto("Password does not match username!"),
                         HttpStatus.UNAUTHORIZED);
@@ -66,6 +66,9 @@ public class AuthController {
         UserEntity user = new UserEntity();
         user.setUsername(registerDto.getUsername());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
+        user.setFirstName(registerDto.getFirstName());
+        user.setLastName(registerDto.getLastName());
+        user.setPhoneNo(registerDto.getPhoneNo());
         userRepository.save(user);
 
         System.out.println(registerDto.getPassword());
