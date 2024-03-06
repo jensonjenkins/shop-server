@@ -6,15 +6,8 @@ import jakarta.persistence.*;
 @Table(name = "user")
 public class UserEntity {
     @Id
-    @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "user_sequence"
-    )
+    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     private Long id;
     private String username;
     @Column(length = 300)
@@ -27,10 +20,10 @@ public class UserEntity {
     }
 
     public UserEntity(String username,
-                      String password,
-                      String firstName,
-                      String lastname,
-                      String phoneNo) {
+            String password,
+            String firstName,
+            String lastname,
+            String phoneNo) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -77,4 +70,5 @@ public class UserEntity {
     public String getPhoneNo() {
         return phoneNo;
     }
+
 }

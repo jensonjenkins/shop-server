@@ -16,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AuthController {
     private AuthenticationManager authenticationManager;
     private UserRepository userRepository;
@@ -33,9 +35,9 @@ public class AuthController {
 
     @Autowired
     public AuthController(AuthenticationManager authenticationManager,
-                          UserRepository userRepository,
-                          PasswordEncoder passwordEncoder,
-                          JWTGenerator jwtGenerator) {
+            UserRepository userRepository,
+            PasswordEncoder passwordEncoder,
+            JWTGenerator jwtGenerator) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -49,21 +51,24 @@ public class AuthController {
             UserEntity user = userOptional.get();
             if (passwordEncoder.matches(loginDto.getPassword(), user.getPassword())) {
                 String token = jwtGenerator.generateToken(loginDto.getUsername());
-                return new ResponseEntity<>(new AuthResponseDto(token), HttpStatus.OK);
+                return new ResponseEntity<>(new AuthResponseDto(token, user), HttpStatus.OK);
             } else {
-                return new ResponseEntity<>(new AuthResponseDto("Password does not match username!"), HttpStatus.UNAUTHORIZED);
+                return new ResponseEntity<>(new AuthResponseDto("Password does not match username!"),
+                        HttpStatus.UNAUTHORIZED);
             }
         } else {
             return new ResponseEntity<>(new AuthResponseDto("Username not found!"), HttpStatus.BAD_REQUEST);
         }
     }
 
-
     @PostMapping("register")
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
         UserEntity user = new UserEntity();
         user.setUsername(registerDto.getUsername());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
+        user.setFirstName(registerDto.getFirstName());
+        user.setLastName(registerDto.getLastName());
+        user.setPhoneNo(registerDto.getPhoneNo());
         userRepository.save(user);
 
         System.out.println(registerDto.getPassword());
