@@ -13,12 +13,12 @@ public class UserConfig {
     @Bean
     CommandLineRunner userCLRunner() {
         return args -> {
-            UserEntity u1 = new UserEntity("jenson@email",
-                    "12345",
-                    "jenson",
-                    "jenkins",
-                    "01239758374");
-            userRepository.save(u1);
+//            UserEntity u1 = new UserEntity("jenson@email",
+//                    "12345",
+//                    "jenson",
+//                    "jenkins",
+//                    "01239758374");
+//            userRepository.save(u1);
         };
     }
 }
