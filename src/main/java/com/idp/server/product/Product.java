@@ -7,34 +7,32 @@ import java.time.LocalDate;
 @Table
 public class Product {
     @Id
-    @SequenceGenerator(
-            name="product_sequence",
-            sequenceName = "product_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator =  "product_sequence"
-    )
+    @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_sequence")
     private Long id;
     private String name;
     private String description;
     private Double price;
     private LocalDate createdAt;
-    private Integer categoryId;
+    private String categoryId;
+    private String imageLink;
 
-    public Product(){};
+    public Product() {
+    };
+
     public Product(String name,
-                   String description,
-                   Double price,
-                   LocalDate createdAt,
-                   Integer categoryId){
+            String description,
+            Double price,
+            LocalDate createdAt,
+            String categoryId, String imageLink) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.createdAt = createdAt;
         this.categoryId = categoryId;
+        this.imageLink = imageLink;
     }
+
     public Double getPrice() {
         return price;
     }
@@ -59,11 +57,11 @@ public class Product {
         this.createdAt = createdAt;
     }
 
-    public Integer getCategoryId() {
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Integer categoryId) {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -73,5 +71,13 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 }
