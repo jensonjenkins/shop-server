@@ -37,6 +37,7 @@ public class ProductConfig {
 //                    LocalDate.now(),
 //                    2);
 //            repository.saveAll(List.of(p1, p2, p3, p4));
+//            repository.deleteAllById(List.of(10L, 11L, 12L, 13L));
         };
     }
 }
