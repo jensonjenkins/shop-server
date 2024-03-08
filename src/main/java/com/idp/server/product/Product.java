@@ -1,6 +1,7 @@
 package com.idp.server.product;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
 @Entity
@@ -18,19 +19,25 @@ public class Product {
     private String imageLink;
 
     public Product() {
-    };
+    }
+
+    ;
 
     public Product(String name,
-            String description,
-            Double price,
-            LocalDate createdAt,
-            String categoryId, String imageLink) {
+                   String description,
+                   Double price,
+                   LocalDate createdAt,
+                   String categoryId, String imageLink) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.createdAt = createdAt;
         this.categoryId = categoryId;
         this.imageLink = imageLink;
+    }
+
+    public Long getId() {
+        return this.id;
     }
 
     public Double getPrice() {

@@ -29,6 +29,10 @@ public class CartItem {
         this.quantity = quantity;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
     public Long getSessionId() {
         return sessionId;
     }

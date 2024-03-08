@@ -5,6 +5,8 @@ import com.idp.server.dto.LoginDto;
 import com.idp.server.dto.RegisterDto;
 import com.idp.server.security.CustomUserDetailService;
 import com.idp.server.security.JWTGenerator;
+import com.idp.server.session.Session;
+import com.idp.server.session.SessionRepository;
 import com.idp.server.user.UserEntity;
 import com.idp.server.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,19 +31,22 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000")
 public class AuthController {
     private AuthenticationManager authenticationManager;
+    private SessionRepository sessionRepository;
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
     private JWTGenerator jwtGenerator;
 
     @Autowired
     public AuthController(AuthenticationManager authenticationManager,
-            UserRepository userRepository,
-            PasswordEncoder passwordEncoder,
-            JWTGenerator jwtGenerator) {
+                          UserRepository userRepository,
+                          PasswordEncoder passwordEncoder,
+                          JWTGenerator jwtGenerator,
+                          SessionRepository sessionRepository) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtGenerator = jwtGenerator;
+        this.sessionRepository = sessionRepository;
     }
 
     @PostMapping("login")
@@ -49,9 +54,10 @@ public class AuthController {
         Optional<UserEntity> userOptional = userRepository.findByUsername(loginDto.getUsername());
         if (userOptional.isPresent()) {
             UserEntity user = userOptional.get();
+            Session session = sessionRepository.findByUserId(user.getId());
             if (passwordEncoder.matches(loginDto.getPassword(), user.getPassword())) {
                 String token = jwtGenerator.generateToken(loginDto.getUsername());
-                return new ResponseEntity<>(new AuthResponseDto(token, user), HttpStatus.OK);
+                return new ResponseEntity<>(new AuthResponseDto(token, user, session), HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(new AuthResponseDto("Password does not match username!"),
                         HttpStatus.UNAUTHORIZED);
@@ -70,6 +76,9 @@ public class AuthController {
         user.setLastName(registerDto.getLastName());
         user.setPhoneNo(registerDto.getPhoneNo());
         userRepository.save(user);
+
+        Session session = new Session(user.getId(), 0);
+        sessionRepository.save(session);
 
         System.out.println(registerDto.getPassword());
         System.out.println(user.getPassword());

@@ -30,6 +30,10 @@ public class Session {
         this.total = total;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Long getUserId() {
         return userId;
     }

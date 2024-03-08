@@ -20,15 +20,19 @@ public class UserEntity {
     }
 
     public UserEntity(String username,
-            String password,
-            String firstName,
-            String lastname,
-            String phoneNo) {
+                      String password,
+                      String firstName,
+                      String lastname,
+                      String phoneNo) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastname;
         this.phoneNo = phoneNo;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setUsername(String username) {

@@ -11,4 +11,7 @@ public interface SessionRepository
         extends JpaRepository<Session, Long> {
     @Query(value = "SELECT * FROM session", nativeQuery = true)
     List<Session> getSessions();
+
+    @Query(value = "SELECT * FROM session WHERE session.user_id = ?1", nativeQuery = true)
+    Session findByUserId(Long userId);
 }

@@ -5,10 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de56b159-d652-4b88-95ae-2b917f808999" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/dto/CartItemDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/dto/UpdateSessionDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/auth/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/auth/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/dto/AuthResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/dto/AuthResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/product/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/product/ProductConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/product/ProductConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/session/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/session/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/user/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/user/UserEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
