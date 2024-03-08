@@ -1,6 +1,7 @@
 package com.idp.server.session;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +15,8 @@ public interface SessionRepository
 
     @Query(value = "SELECT * FROM session WHERE session.user_id = ?1", nativeQuery = true)
     Session findByUserId(Long userId);
+
+    @Modifying
+    @Query(value = "UPDATE session SET total = ?2 where session.id = ?1", nativeQuery = true)
+    void updateTotal(Long userId, double newPrice);
 }

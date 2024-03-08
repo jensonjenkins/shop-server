@@ -1,7 +1,9 @@
 package com.idp.server.cartItem;
 
 import com.idp.server.dto.CartItemDto;
+import com.idp.server.dto.DisplayCartItemDto;
 import com.idp.server.dto.UpdateSessionDto;
+import jakarta.persistence.Tuple;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +25,7 @@ public class CartItemController {
     }
 
     @PostMapping("/my_cart")
-    public List<CartItem> getMyCartItem(@RequestBody UpdateSessionDto updateSessionDto) {
+    public List<DisplayCartItemDto> getMyCartItem(@RequestBody UpdateSessionDto updateSessionDto) {
         return cartItemService.getMyCartItem(updateSessionDto);
     }
 

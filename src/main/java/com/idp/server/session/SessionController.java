@@ -22,7 +22,7 @@ public class SessionController {
     }
 
     @PostMapping
-    public ResponseEntity<String> updateSession(@RequestBody UpdateSessionDto updateSessionDto) {
+    public Session updateSession(@RequestBody UpdateSessionDto updateSessionDto) {
         return sessionService.updateSession(updateSessionDto);
     }
 }
