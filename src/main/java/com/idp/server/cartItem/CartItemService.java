@@ -88,7 +88,9 @@ public class CartItemService {
     @Transactional
     public ResponseEntity<String> deleteAllBySessionId(Long sessionId) {
         cartItemRepository.deleteAllBySessionId(sessionId);
-        return new ResponseEntity<>("All cart item deleted.", HttpStatus.OK);
+        sessionRepository.updateTotal(sessionId, 0.0);
+        double total = getTotal(sessionId);
+        return new ResponseEntity<>("All cart item deleted. " + total, HttpStatus.OK);
     }
 
     @Transactional
