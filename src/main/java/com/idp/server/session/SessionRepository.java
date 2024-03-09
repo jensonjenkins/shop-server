@@ -18,5 +18,5 @@ public interface SessionRepository
 
     @Modifying
     @Query(value = "UPDATE session SET total = ?2 where session.id = ?1", nativeQuery = true)
-    void updateTotal(Long userId, double newPrice);
+    void updateTotal(Long sessionId, double newPrice);
 }

@@ -26,7 +26,7 @@ public class CartItemController {
 
     @PostMapping("/my_cart")
     public List<DisplayCartItemDto> getMyCartItem(@RequestBody UpdateSessionDto updateSessionDto) {
-        return cartItemService.getMyCartItem(updateSessionDto);
+        return cartItemService.getMyCartItem(updateSessionDto.getSessionId());
     }
 
     @PostMapping

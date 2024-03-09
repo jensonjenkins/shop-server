@@ -4,6 +4,7 @@ import com.idp.server.dto.CartItemDto;
 import com.idp.server.dto.DisplayCartItemDto;
 import com.idp.server.dto.UpdateSessionDto;
 import com.idp.server.session.Session;
+import com.idp.server.session.SessionRepository;
 import com.idp.server.user.UserEntity;
 import jakarta.persistence.Tuple;
 import jakarta.transaction.Transactional;
@@ -20,18 +21,20 @@ import java.util.Optional;
 @Service
 public class CartItemService {
     private final CartItemRepository cartItemRepository;
+    private final SessionRepository sessionRepository;
 
     @Autowired
-    public CartItemService(CartItemRepository cartItemRepository) {
+    public CartItemService(CartItemRepository cartItemRepository, SessionRepository sessionRepository) {
         this.cartItemRepository = cartItemRepository;
+        this.sessionRepository = sessionRepository;
     }
 
     public List<CartItem> getCartItem() {
         return cartItemRepository.getCartItem();
     }
 
-    public List<DisplayCartItemDto> getMyCartItem(UpdateSessionDto updateSessionDto) {
-        List<Tuple> result = cartItemRepository.getMyCartItem(updateSessionDto.getSessionId());
+    public List<DisplayCartItemDto> getMyCartItem(Long sessionId) {
+        List<Tuple> result = cartItemRepository.getMyCartItem(sessionId);
         List<DisplayCartItemDto> response = new ArrayList<>();
         String name, imageLink;
         Integer quantity;
@@ -46,6 +49,18 @@ public class CartItemService {
         return response;
     }
 
+    private double getTotal(Long sessionId) {
+        List<Tuple> result = cartItemRepository.getMyCartItem(sessionId);
+        Integer quantity;
+        double price, total = 0.0;
+        for (Tuple tuple : result) {
+            quantity = tuple.get("quantity", Integer.class);
+            price = tuple.get("price", Double.class);
+            total += quantity * price;
+        }
+        return total;
+    }
+
     @Transactional
     public ResponseEntity<String> addToCart(CartItemDto cartItemDto) {
         Long sessionId = cartItemDto.getSessionId();
@@ -56,10 +71,14 @@ public class CartItemService {
         if (cartItemOptional.isPresent()) {
             CartItem cartItem = cartItemOptional.get();
             quantity += cartItem.getQuantity();
-            cartItemRepository.updateQty(sessionId, quantity);
+            cartItemRepository.updateQty(sessionId, productId, quantity);
+            double total = getTotal(sessionId);
+            sessionRepository.updateTotal(sessionId, total);
             return new ResponseEntity<>("Cart updated.", HttpStatus.OK);
         } else {
             cartItemRepository.save(new CartItem(sessionId, productId, quantity));
+            double total = getTotal(sessionId);
+            sessionRepository.updateTotal(sessionId, total);
             return new ResponseEntity<>("New cart item created.", HttpStatus.OK);
         }
     }

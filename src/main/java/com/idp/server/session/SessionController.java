@@ -21,8 +21,8 @@ public class SessionController {
         return sessionService.getSessions();
     }
 
-    @PostMapping
-    public Session updateSession(@RequestBody UpdateSessionDto updateSessionDto) {
-        return sessionService.updateSession(updateSessionDto);
+    @PostMapping(value = "/total")
+    public Session getSessionById(@RequestBody UpdateSessionDto updateSessionDto) {
+        return sessionService.getSessionById(updateSessionDto.getSessionId());
     }
 }

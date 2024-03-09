@@ -28,6 +28,6 @@ public interface CartItemRepository
     Optional<CartItem> getCartItemByBothIds(Long sessionId, Long productId);
 
     @Modifying
-    @Query(value = "UPDATE cart_item SET quantity = ?2 WHERE cart_item.session_id = ?1", nativeQuery = true)
-    void updateQty(Long sessionId, Integer qty);
+    @Query(value = "UPDATE cart_item SET quantity = ?3 WHERE cart_item.session_id = ?1 AND cart_item.product_id = ?2", nativeQuery = true)
+    void updateQty(Long sessionId, Long productId, Integer qty);
 }
