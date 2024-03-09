@@ -82,4 +82,10 @@ public class CartItemService {
             return new ResponseEntity<>("New cart item created.", HttpStatus.OK);
         }
     }
+
+    @Transactional
+    public ResponseEntity<String> deleteAllBySessionId(Long sessionId) {
+        cartItemRepository.deleteAllBySessionId(sessionId);
+        return new ResponseEntity<>("All cart item deleted.", HttpStatus.OK);
+    }
 }

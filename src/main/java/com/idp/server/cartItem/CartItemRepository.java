@@ -30,4 +30,8 @@ public interface CartItemRepository
     @Modifying
     @Query(value = "UPDATE cart_item SET quantity = ?3 WHERE cart_item.session_id = ?1 AND cart_item.product_id = ?2", nativeQuery = true)
     void updateQty(Long sessionId, Long productId, Integer qty);
+
+    @Modifying
+    @Query(value = "DELETE FROM cart_item WHERE cart_item.session_id = ?1", nativeQuery = true)
+    void deleteAllBySessionId(Long sessionId);
 }

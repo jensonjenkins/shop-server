@@ -9,9 +9,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/cartItem/CartItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/session/SessionService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

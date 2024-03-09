@@ -33,4 +33,9 @@ public class CartItemController {
     public ResponseEntity<String> addToCart(@RequestBody CartItemDto cartItemDto) {
         return cartItemService.addToCart(cartItemDto);
     }
+
+    @DeleteMapping(value = "/all")
+    public ResponseEntity<String> deleteAllBySessionId(@RequestBody UpdateSessionDto updateSessionDto) {
+        return cartItemService.deleteAllBySessionId(updateSessionDto.getSessionId());
+    }
 }
