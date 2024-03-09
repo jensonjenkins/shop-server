@@ -9,11 +9,14 @@ public class DisplayCartItemDto {
     private double price;
     private String imageLink;
 
-    public DisplayCartItemDto(int quantity, String name, double price, String imageLink) {
+    private Long productId;
+
+    public DisplayCartItemDto(int quantity, String name, double price, String imageLink, Long productId) {
         this.quantity = quantity;
         this.name = name;
         this.price = price;
         this.imageLink = imageLink;
+        this.productId = productId;
     }
 
     public int getQuantity() {
@@ -26,6 +29,10 @@ public class DisplayCartItemDto {
 
     public double getPrice() {
         return price;
+    }
+
+    public Long getProductId() {
+        return productId;
     }
 
     public String getImageLink() {

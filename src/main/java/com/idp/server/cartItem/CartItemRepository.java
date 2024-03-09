@@ -17,7 +17,7 @@ public interface CartItemRepository
     @Query(value = "SELECT * FROM cart_item", nativeQuery = true)
     List<CartItem> getCartItem();
 
-    @Query(value = "SELECT quantity, name, price, image_link " +
+    @Query(value = "SELECT product_id, quantity, name, price, image_link " +
             "FROM session, cart_item, product " +
             "WHERE product.id = cart_item.product_id " +
             "AND session.id = cart_item.session_id " +
@@ -34,4 +34,8 @@ public interface CartItemRepository
     @Modifying
     @Query(value = "DELETE FROM cart_item WHERE cart_item.session_id = ?1", nativeQuery = true)
     void deleteAllBySessionId(Long sessionId);
+
+    @Modifying
+    @Query(value = "DELETE FROM cart_item WHERE cart_item.session_id = ?1 AND cart_item.product_id = ?2", nativeQuery = true)
+    void deleteOneItem(Long sessionId, Long productId);
 }

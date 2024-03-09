@@ -39,17 +39,19 @@ public class CartItemService {
         String name, imageLink;
         Integer quantity;
         double price;
+        Long productId;
         for (Tuple tuple : result) {
+            productId = tuple.get("product_id", Long.class);
             name = tuple.get("name", String.class);
             imageLink = tuple.get("image_link", String.class);
             quantity = tuple.get("quantity", Integer.class);
             price = tuple.get("price", Double.class);
-            response.add(new DisplayCartItemDto(quantity, name, price, imageLink));
+            response.add(new DisplayCartItemDto(quantity, name, price, imageLink, productId));
         }
         return response;
     }
 
-    private double getTotal(Long sessionId) {
+    public double getTotal(Long sessionId) {
         List<Tuple> result = cartItemRepository.getMyCartItem(sessionId);
         Integer quantity;
         double price, total = 0.0;
@@ -87,5 +89,11 @@ public class CartItemService {
     public ResponseEntity<String> deleteAllBySessionId(Long sessionId) {
         cartItemRepository.deleteAllBySessionId(sessionId);
         return new ResponseEntity<>("All cart item deleted.", HttpStatus.OK);
+    }
+
+    @Transactional
+    public ResponseEntity<String> deleteOneItem(Long sessionId, Long productId) {
+        cartItemRepository.deleteOneItem(sessionId, productId);
+        return new ResponseEntity<>("Item successfully removed.", HttpStatus.OK);
     }
 }

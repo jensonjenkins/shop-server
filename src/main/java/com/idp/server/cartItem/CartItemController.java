@@ -38,4 +38,9 @@ public class CartItemController {
     public ResponseEntity<String> deleteAllBySessionId(@RequestBody UpdateSessionDto updateSessionDto) {
         return cartItemService.deleteAllBySessionId(updateSessionDto.getSessionId());
     }
+
+    @DeleteMapping(value = "/remove_item")
+    public ResponseEntity<String> deleteOneItem(@RequestBody CartItemDto cartItemDto) {
+        return cartItemService.deleteOneItem(cartItemDto.getSessionId(), cartItemDto.getProductId());
+    }
 }
