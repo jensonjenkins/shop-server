@@ -17,23 +17,24 @@ public class Product {
     private LocalDate createdAt;
     private String categoryId;
     private String imageLink;
+    private Integer quantity;
 
     public Product() {
     }
-
-    ;
 
     public Product(String name,
                    String description,
                    Double price,
                    LocalDate createdAt,
-                   String categoryId, String imageLink) {
+                   String categoryId, String imageLink,
+                   Integer quantity) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.createdAt = createdAt;
         this.categoryId = categoryId;
         this.imageLink = imageLink;
+        this.quantity = quantity;
     }
 
     public Long getId() {
@@ -66,6 +67,14 @@ public class Product {
 
     public String getCategoryId() {
         return categoryId;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public void setCategoryId(String categoryId) {
