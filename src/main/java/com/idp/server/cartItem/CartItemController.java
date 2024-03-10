@@ -43,4 +43,9 @@ public class CartItemController {
     public ResponseEntity<String> deleteOneItem(@RequestBody CartItemDto cartItemDto) {
         return cartItemService.deleteOneItem(cartItemDto.getSessionId(), cartItemDto.getProductId());
     }
+
+    @PostMapping(value = "/updateAvailability")
+    public ResponseEntity<String> updateAvailability(@RequestBody UpdateSessionDto updateSessionDto) {
+        return cartItemService.updateAvailability(updateSessionDto.getSessionId());
+    }
 }

@@ -3,6 +3,8 @@ package com.idp.server.cartItem;
 import com.idp.server.dto.CartItemDto;
 import com.idp.server.dto.DisplayCartItemDto;
 import com.idp.server.dto.UpdateSessionDto;
+import com.idp.server.product.Product;
+import com.idp.server.product.ProductRepository;
 import com.idp.server.session.Session;
 import com.idp.server.session.SessionRepository;
 import com.idp.server.user.UserEntity;
@@ -22,11 +24,14 @@ import java.util.Optional;
 public class CartItemService {
     private final CartItemRepository cartItemRepository;
     private final SessionRepository sessionRepository;
+    private final ProductRepository productRepository;
 
     @Autowired
-    public CartItemService(CartItemRepository cartItemRepository, SessionRepository sessionRepository) {
+    public CartItemService(CartItemRepository cartItemRepository, SessionRepository sessionRepository,
+            ProductRepository productRepository) {
         this.cartItemRepository = cartItemRepository;
         this.sessionRepository = sessionRepository;
+        this.productRepository = productRepository;
     }
 
     public List<CartItem> getCartItem() {
@@ -97,5 +102,33 @@ public class CartItemService {
     public ResponseEntity<String> deleteOneItem(Long sessionId, Long productId) {
         cartItemRepository.deleteOneItem(sessionId, productId);
         return new ResponseEntity<>("Item successfully removed.", HttpStatus.OK);
+    }
+
+    @Transactional
+    public ResponseEntity<String> updateAvailability(Long sessionId) {
+        List<Tuple> result = cartItemRepository.getMyCartItem(sessionId);
+        System.out.println(result);
+
+        for (Tuple tuple : result) {
+            Long productId = tuple.get("product_id", Long.class);
+            Integer quantity = tuple.get("quantity", Integer.class);
+
+            // Get the product from the repository
+            Optional<Product> productOptional = productRepository.findById(productId);
+            if (productOptional.isPresent()) {
+                Product product = productOptional.get();
+
+                // Update product availability
+                int newAvailability = product.getAvailability() - quantity;
+                if (newAvailability < 0) {
+                    newAvailability = 0; // Ensure availability doesn't go negative
+                }
+                product.setAvailability(newAvailability);
+                productRepository.save(product);
+            }
+        }
+
+        return new ResponseEntity<>("Product availability updated after checkout." + result, HttpStatus.OK);
+
     }
 }
