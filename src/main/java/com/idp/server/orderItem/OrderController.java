@@ -1,5 +1,6 @@
 package com.idp.server.orderItem;
 
+import com.idp.server.dto.DisplayCartItemDto;
 import com.idp.server.dto.OrderItemDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class OrderController {
     }
 
     @PostMapping("/getBySessionId")
-    List<OrderItem> getOrderItemsBySessionId(@RequestBody OrderItemDto orderItemDto) {
+    List<DisplayCartItemDto> getOrderItemsBySessionId(@RequestBody OrderItemDto orderItemDto) {
         return orderService.getOrderItemsBySessionId(orderItemDto.getSessionId());
     }
 
