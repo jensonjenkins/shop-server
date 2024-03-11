@@ -13,6 +13,9 @@ public class OrderItem {
     private Integer quantity;
     private Long productId;
 
+    public OrderItem() {
+    }
+
     public OrderItem(Long sessionId, Integer quantity, Long productId) {
         this.sessionId = sessionId;
         this.quantity = quantity;

@@ -2,7 +2,6 @@ package com.idp.server.orderItem;
 
 import com.idp.server.cartItem.CartItemService;
 import com.idp.server.dto.DisplayCartItemDto;
-import com.idp.server.dto.OrderItemDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
