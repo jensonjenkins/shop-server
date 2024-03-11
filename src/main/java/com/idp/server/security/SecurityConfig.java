@@ -31,7 +31,7 @@ public class SecurityConfig {
 
     @Autowired
     public SecurityConfig(CustomUserDetailService userDetailService,
-            JwtAuthEntryPoint authEntryPoint) {
+                          JwtAuthEntryPoint authEntryPoint) {
         this.userDetailService = userDetailService;
         this.authEntryPoint = authEntryPoint;
     }

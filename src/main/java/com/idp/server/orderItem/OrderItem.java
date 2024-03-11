@@ -6,20 +6,22 @@ import jakarta.persistence.*;
 @Table
 public class OrderItem {
     @Id
-    @SequenceGenerator(name = "order_sequence", sequenceName = "order_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_sequence")
+    @SequenceGenerator(name = "order_item_sequence", sequenceName = "order_item_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_item_sequence")
     private Long id;
     private Long sessionId;
     private Integer quantity;
     private Long productId;
+    private Long orderId;
 
     public OrderItem() {
     }
 
-    public OrderItem(Long sessionId, Integer quantity, Long productId) {
+    public OrderItem(Long sessionId, Integer quantity, Long productId, Long orderId) {
         this.sessionId = sessionId;
         this.quantity = quantity;
         this.productId = productId;
+        this.orderId = orderId;
     }
 
     public Long getId() {
@@ -48,5 +50,13 @@ public class OrderItem {
 
     public void setProductId(Long productId) {
         this.productId = productId;
+    }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 }

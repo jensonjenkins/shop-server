@@ -2,6 +2,9 @@ package com.idp.server.orderItem;
 
 import com.idp.server.cartItem.CartItemService;
 import com.idp.server.dto.DisplayCartItemDto;
+import com.idp.server.dto.OrderListItemDto;
+import com.idp.server.order.OrderTable;
+import com.idp.server.order.OrderRepository;
 import jakarta.persistence.Tuple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,45 +15,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class OrderService {
-    private final OrderRepository orderRepository;
+public class OrderItemService {
+    private final OrderItemRepository orderItemRepository;
     private final CartItemService cartItemService;
+    private final OrderRepository orderRepository;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository, CartItemService cartItemService) {
-        this.orderRepository = orderRepository;
+    public OrderItemService(OrderItemRepository orderItemRepository, CartItemService cartItemService, OrderRepository orderRepository) {
+        this.orderItemRepository = orderItemRepository;
         this.cartItemService = cartItemService;
+        this.orderRepository = orderRepository;
     }
 
 
     public List<OrderItem> getOrderItems() {
-        return orderRepository.getOrderItems();
+        return orderItemRepository.getOrderItems();
     }
 
-    public List<DisplayCartItemDto> getOrderItemsBySessionId(Long sessionId) {
-        List<Tuple> result = orderRepository.getOrderItemsBySessionId(sessionId);
-        List<DisplayCartItemDto> response = new ArrayList<>();
+    public List<OrderListItemDto> getOrderItemsBySessionId(Long sessionId) {
+        List<Tuple> result = orderItemRepository.getOrderItemsBySessionId(sessionId);
+        List<OrderListItemDto> response = new ArrayList<>();
         String name, imageLink;
         Integer quantity;
         double price;
-        Long productId;
+        Long orderId;
         for (Tuple tuple : result) {
-            productId = tuple.get("product_id", Long.class);
+            orderId = tuple.get("order_id", Long.class);
             name = tuple.get("name", String.class);
             imageLink = tuple.get("image_link", String.class);
             quantity = tuple.get("quantity", Integer.class);
             price = tuple.get("price", Double.class);
-            response.add(new DisplayCartItemDto(quantity, name, price, imageLink, productId));
+            response.add(new OrderListItemDto(quantity, name, price, imageLink, orderId));
         }
         return response;
     }
 
     public ResponseEntity<String> postOrderItem(Long sessionId) {
         List<DisplayCartItemDto> myCartItems = cartItemService.getMyCartItem(sessionId);
+        OrderTable orderTable = new OrderTable(sessionId);
+        orderRepository.save(orderTable);
         for (DisplayCartItemDto cartItem : myCartItems) {
-            orderRepository.save(new OrderItem(sessionId,
-                    cartItem.getQuantity(), cartItem.getProductId()));
+            orderItemRepository.save(new OrderItem(sessionId,
+                    cartItem.getQuantity(), cartItem.getProductId(), orderTable.getId()));
         }
+        System.out.println("OrderTable id: " + orderTable.getId());
         return new ResponseEntity<>("Order updated!", HttpStatus.OK);
     }
 }

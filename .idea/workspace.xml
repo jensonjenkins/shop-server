@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de56b159-d652-4b88-95ae-2b917f808999" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/dto/OrderListItemDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/order/OrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/order/OrderRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/order/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/order/OrderTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/orderItem/OrderItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/product/ProductConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/product/ProductConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/idp/server/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/idp/server/security/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
